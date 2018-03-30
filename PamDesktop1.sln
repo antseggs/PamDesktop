@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PamDesktop1", "PamDesktop1.csproj", "{E7E3CA3C-0557-4269-858F-595938B4F7CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7E3CA3C-0557-4269-858F-595938B4F7CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7E3CA3C-0557-4269-858F-595938B4F7CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7E3CA3C-0557-4269-858F-595938B4F7CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7E3CA3C-0557-4269-858F-595938B4F7CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {894199C3-65EC-4FEF-9602-255017790CA9}
+	EndGlobalSection
+EndGlobal
