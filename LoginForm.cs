@@ -5,11 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Authentication;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using this.PamDesktop.ApiConnector;
+// using this.PamDesktop.ApiConnector;
 
 namespace PamDesktop
 {
@@ -55,38 +57,54 @@ namespace PamDesktop
                 // Login to the system send the request. Get back token and if successful then load the next form. Else show login invalid.
                 Authentication authString = new Authentication();
                 authString.Username = txtUsername.Text;
-                authString.Password = txtPassword.Text; //UPDATE THIS FOR SALT AND HASH! // Do this! /// Dont ignore it! //********************************
+                authString.Password = txtPassword.Text;
+
+                //SALT AND HASH! // Do this! /// Dont ignore it! //********************************
+                HashAlgorithm algo = new SHA256Managed();
+                Byte[] plainTextWithSalt = new byte[authString.Password.Length + 8];
+                
 
                 string json = "";
                 json = JsonConvert.SerializeObject(authString);
+                json = "=" + json;
 
                 string path = "";
                 path = information.URL + "/api/authentication";
 
                 string response = ApiConnector.SendToApi(path, json);
+                response = response.Substring(1,response.Length-2);
+
+                if(response == "Fail")
+                {
+                    throw new AuthenticationException("Incorrect Username or Password");
+                }
 
                 //add the responce to the information tile
-                LoggedInType token = JsonConvert.DeserializeObject<LoggedInType>(response);
-                information.Token = token.SessionKey;
+                LoggedInType token = new LoggedInType();
+                token.SessionKey = response;
+                information.Token = response;
                 // Get self!
                 UserGeneral yourself = new UserGeneral();
 
                 path = information.URL + "/api/users/getSelf";
                 json = JsonConvert.SerializeObject(token);
+                json = "=" + json;
 
                 response = ApiConnector.SendToApi(path, json);
+                //response = response.Substring(1, response.Length - 2);
+                //response.Replace(@"\", "");
 
-                yourself = JsonConvert.DeserializeObject<UserGeneral>(response);
+                yourself.Equals(JsonConvert.DeserializeObject<UserGeneral>(response));
 
                 // Open next form and pass information!
-
-
-
+                ServerView serverView = new ServerView();
+                serverView.ShowDialog();
+                this.Hide();
             }
             catch (Exception ex)
             {
                 // Catch all exceptions 
-                MessageBox.Show("Login error, Please try again!");
+                MessageBox.Show("Login error, Please try again! " + ex);
             }
         }
 

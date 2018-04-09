@@ -1,6 +1,6 @@
 ﻿namespace PamDesktop
 {
-    partial class Form1
+    partial class ServerView
     {
         /// <summary>
         /// Required designer variable.
@@ -201,7 +201,7 @@
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // ServerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -223,7 +223,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "ServerView";
             this.Text = "PAM - Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

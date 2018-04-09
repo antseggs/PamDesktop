@@ -1,5 +1,4 @@
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.csprojResolveAssemblyReference.cache
-C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.Form1.resources
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.LoginForm.resources
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.Properties.Resources.resources
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.csproj.GenerateResource.cache
@@ -134,3 +133,4 @@ C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.exe.co
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.csproj.CopyComplete
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.exe
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.pdb
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.ServerView.resources

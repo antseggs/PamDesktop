@@ -30,6 +30,7 @@ namespace PamDesktop
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
+                    //result = result.Substring(2, result.Length - 4);
                     return result;
                 }
             }
