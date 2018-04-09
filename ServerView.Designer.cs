@@ -38,12 +38,13 @@
             this.btnManagePasswords = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnViewPassword = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnRunAutomation = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 602);
+            this.label3.Location = new System.Drawing.Point(30, 603);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(256, 13);
             this.label3.TabIndex = 2;
@@ -89,14 +90,14 @@
             // 
             this.btnAccountSettings.Location = new System.Drawing.Point(15, 43);
             this.btnAccountSettings.Name = "btnAccountSettings";
-            this.btnAccountSettings.Size = new System.Drawing.Size(130, 23);
+            this.btnAccountSettings.Size = new System.Drawing.Size(106, 23);
             this.btnAccountSettings.TabIndex = 4;
             this.btnAccountSettings.Text = "Account Settings";
             this.btnAccountSettings.UseVisualStyleBackColor = true;
             // 
             // btnManageServers
             // 
-            this.btnManageServers.Location = new System.Drawing.Point(171, 577);
+            this.btnManageServers.Location = new System.Drawing.Point(170, 578);
             this.btnManageServers.Name = "btnManageServers";
             this.btnManageServers.Size = new System.Drawing.Size(130, 23);
             this.btnManageServers.TabIndex = 5;
@@ -105,7 +106,7 @@
             // 
             // btnManageUsers
             // 
-            this.btnManageUsers.Location = new System.Drawing.Point(16, 548);
+            this.btnManageUsers.Location = new System.Drawing.Point(15, 549);
             this.btnManageUsers.Name = "btnManageUsers";
             this.btnManageUsers.Size = new System.Drawing.Size(130, 23);
             this.btnManageUsers.TabIndex = 6;
@@ -114,7 +115,7 @@
             // 
             // btnManagePasswords
             // 
-            this.btnManagePasswords.Location = new System.Drawing.Point(16, 577);
+            this.btnManagePasswords.Location = new System.Drawing.Point(15, 578);
             this.btnManagePasswords.Name = "btnManagePasswords";
             this.btnManagePasswords.Size = new System.Drawing.Size(130, 23);
             this.btnManagePasswords.TabIndex = 7;
@@ -132,24 +133,24 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(16, 346);
+            this.listBox2.Location = new System.Drawing.Point(15, 338);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(284, 160);
             this.listBox2.TabIndex = 9;
             // 
-            // button1
+            // btnViewPassword
             // 
-            this.button1.Location = new System.Drawing.Point(194, 512);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Start Connection";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnViewPassword.Location = new System.Drawing.Point(192, 504);
+            this.btnViewPassword.Name = "btnViewPassword";
+            this.btnViewPassword.Size = new System.Drawing.Size(107, 23);
+            this.btnViewPassword.TabIndex = 10;
+            this.btnViewPassword.Text = "View Password";
+            this.btnViewPassword.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 330);
+            this.label2.Location = new System.Drawing.Point(12, 322);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 11;
@@ -191,17 +192,27 @@
             this.btnRunAutomation.Text = "Run Automation";
             this.btnRunAutomation.UseVisualStyleBackColor = true;
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Location = new System.Drawing.Point(170, 549);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(130, 23);
+            this.btnLogOut.TabIndex = 16;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 625);
+            this.ClientSize = new System.Drawing.Size(312, 627);
+            this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnRunAutomation);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnViewPassword);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnManagePasswords);
@@ -232,12 +243,13 @@
         private System.Windows.Forms.Button btnManagePasswords;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnViewPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnRunAutomation;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }
 
