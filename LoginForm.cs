@@ -61,9 +61,14 @@ namespace PamDesktop
 
                 //SALT AND HASH! // Do this! /// Dont ignore it! //********************************
                 HashAlgorithm algo = new SHA256Managed();
-                Byte[] plainTextWithSalt = new byte[authString.Password.Length + 8];
+                var hash = algo.ComputeHash(Encoding.ASCII.GetBytes("quis" + authString.Password + "quam"));
+                string hexHash = "";
+                for (int i = 0; i < hash.Length; i++)
+                {
+                    hexHash = hexHash + hash[i].ToString();
+                }
+                authString.Password = hexHash;
                 
-
                 string json = "";
                 json = JsonConvert.SerializeObject(authString);
                 json = "=" + json;
@@ -74,7 +79,7 @@ namespace PamDesktop
                 string response = ApiConnector.SendToApi(path, json);
                 response = response.Substring(1,response.Length-2);
 
-                if(response == "Fail")
+                if(response == "fail")
                 {
                     throw new AuthenticationException("Incorrect Username or Password");
                 }
@@ -104,7 +109,7 @@ namespace PamDesktop
             catch (Exception ex)
             {
                 // Catch all exceptions 
-                MessageBox.Show("Login error, Please try again! " + ex);
+                MessageBox.Show("Login error, Please try again! ");
             }
         }
 
