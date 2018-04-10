@@ -99,12 +99,14 @@ namespace PamDesktop
                 //response = response.Substring(1, response.Length - 2);
                 //response.Replace(@"\", "");
 
-                yourself.Equals(JsonConvert.DeserializeObject<UserGeneral>(response));
+                yourself = JsonConvert.DeserializeObject<UserGeneral>(response);
+                information.Name = yourself.FirstName + " " + yourself.Surname + " - " + yourself.JobTitle;
+                information.UserId = yourself.UserId;
 
                 // Open next form and pass information!
-                ServerView serverView = new ServerView();
-                serverView.ShowDialog();
                 this.Hide();
+                ServerView serverView = new ServerView(information);
+                serverView.ShowDialog();
             }
             catch (Exception ex)
             {

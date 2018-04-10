@@ -12,14 +12,17 @@ namespace PamDesktop
 {
     public partial class ServerView : Form
     {
-        public ServerView()
+        ProgramInfo information;
+
+        public ServerView(ProgramInfo info)
         {
             InitializeComponent();
+            information = info;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            lblWelcome.Text = " Welcome back " + information.Name;
         }
 
         private void label2_Click(object sender, EventArgs e)
