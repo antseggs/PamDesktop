@@ -36,13 +36,13 @@
             this.btnManageServers = new System.Windows.Forms.Button();
             this.btnManageUsers = new System.Windows.Forms.Button();
             this.btnManagePasswords = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.lstServerList = new System.Windows.Forms.ListBox();
+            this.lstAccountsList = new System.Windows.Forms.ListBox();
             this.btnViewPassword = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbAutomationList = new System.Windows.Forms.ComboBox();
             this.btnRunAutomation = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -122,21 +122,21 @@
             this.btnManagePasswords.Text = "Manage Passwords";
             this.btnManagePasswords.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // lstServerList
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(15, 83);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(284, 160);
-            this.listBox1.TabIndex = 8;
+            this.lstServerList.FormattingEnabled = true;
+            this.lstServerList.Location = new System.Drawing.Point(15, 83);
+            this.lstServerList.Name = "lstServerList";
+            this.lstServerList.Size = new System.Drawing.Size(284, 160);
+            this.lstServerList.TabIndex = 8;
             // 
-            // listBox2
+            // lstAccountsList
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(15, 338);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(284, 160);
-            this.listBox2.TabIndex = 9;
+            this.lstAccountsList.FormattingEnabled = true;
+            this.lstAccountsList.Location = new System.Drawing.Point(15, 338);
+            this.lstAccountsList.Name = "lstAccountsList";
+            this.lstAccountsList.Size = new System.Drawing.Size(284, 160);
+            this.lstAccountsList.TabIndex = 9;
             // 
             // btnViewPassword
             // 
@@ -175,13 +175,13 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Automation (Optional)";
             // 
-            // comboBox1
+            // cmbAutomationList
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(15, 268);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(284, 21);
-            this.comboBox1.TabIndex = 14;
+            this.cmbAutomationList.FormattingEnabled = true;
+            this.cmbAutomationList.Location = new System.Drawing.Point(15, 268);
+            this.cmbAutomationList.Name = "cmbAutomationList";
+            this.cmbAutomationList.Size = new System.Drawing.Size(284, 21);
+            this.cmbAutomationList.TabIndex = 14;
             // 
             // btnRunAutomation
             // 
@@ -208,13 +208,13 @@
             this.ClientSize = new System.Drawing.Size(312, 627);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnRunAutomation);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbAutomationList);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnViewPassword);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lstAccountsList);
+            this.Controls.Add(this.lstServerList);
             this.Controls.Add(this.btnManagePasswords);
             this.Controls.Add(this.btnManageUsers);
             this.Controls.Add(this.btnManageServers);
@@ -241,13 +241,13 @@
         private System.Windows.Forms.Button btnManageServers;
         private System.Windows.Forms.Button btnManageUsers;
         private System.Windows.Forms.Button btnManagePasswords;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox lstServerList;
+        private System.Windows.Forms.ListBox lstAccountsList;
         private System.Windows.Forms.Button btnViewPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbAutomationList;
         private System.Windows.Forms.Button btnRunAutomation;
         private System.Windows.Forms.Button btnLogOut;
     }

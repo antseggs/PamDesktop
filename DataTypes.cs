@@ -50,4 +50,44 @@ namespace PamDesktop
     {
         //Used to add the token
     }
+
+    public class GetAccessLevel : LoggedInType
+    {
+        public int? Id { get; set; }
+    }
+
+    public class ServerAccessLevel
+    {
+        public int? ServerAccessId { get; set; }
+        public int? UserId { get; set; }
+        public int? DepartmentId { get; set; }
+        public int? ServerId { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? FinishTime { get; set; }
+        public int? StandardAccountId { get; set; }
+        public bool? Allowed { get; set; }
+    }
+
+    public class Server
+    {
+        public int ServerId { get; set; }
+        public int ServerOsId { get; set; }
+        public string ServerName { get; set; }
+        public string ServerDescription { get; set; }
+        public string ServerIp { get; set; }
+        public string Fqdn { get; set; }
+        public string ServerNote { get; set; }
+        public bool IpStatic { get; set; }
+    }
+
+    public class StandardAccount
+    {
+        public int StandardAccountId { get; set; }
+        public string AccountName { get; set; }
+        public string AccountAddress { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public int? AccountGroupId { get; set; }
+        public string Note { get; set; }
+    }
 }

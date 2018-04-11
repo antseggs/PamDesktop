@@ -108,7 +108,7 @@ namespace PamDesktop
                 ServerView serverView = new ServerView(information);
                 serverView.ShowDialog();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Catch all exceptions 
                 MessageBox.Show("Login error, Please try again! ");
