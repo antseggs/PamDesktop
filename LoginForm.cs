@@ -79,7 +79,7 @@ namespace PamDesktop
                 string response = ApiConnector.SendToApi(path, json);
                 response = response.Substring(1,response.Length-2);
 
-                if(response == "fail")
+                if(response == "fail" || response.Contains("FAIL"))
                 {
                     throw new AuthenticationException("Incorrect Username or Password");
                 }

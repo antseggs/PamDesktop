@@ -15,6 +15,9 @@ namespace PamDesktop
     {
         ProgramInfo information;
         List<Server> servers = new List<Server>();
+        List<StandardAccount> passwords = new List<StandardAccount>();
+        List<Automation> currentAutomation = new List<Automation>();
+
 
         public ServerView(ProgramInfo info)
         {
@@ -41,9 +44,6 @@ namespace PamDesktop
             string response = ApiConnector.SendToApi(path, json);
             List<ServerAccessLevel> serverList = new List<ServerAccessLevel>();
             serverList = JsonConvert.DeserializeObject<List<ServerAccessLevel>>(response);
-
-            List<StandardAccount> passwords = new List<StandardAccount>();
-
 
             // Load in all appropriate server details
             foreach (ServerAccessLevel access in serverList)
@@ -88,8 +88,27 @@ namespace PamDesktop
             lstAccountsList.ValueMember = "StandardAccountId";
 
             // Load in all services details
+            getAutomation(servers[0].ServerOsId);
+            cmbAutomationList.DataSource = currentAutomation;
+            cmbAutomationList.DisplayMember = "ScriptName";
+            cmbAutomationList.ValueMember = "AutomationScriptId";
+        }
 
+        private void getAutomation(int? serverOsId)
+        {
+            GetAccessLevel current = new GetAccessLevel();
+            current.SessionKey = information.Token;
+            current.Id = serverOsId;
 
+            string json = "";
+            json = JsonConvert.SerializeObject(current);
+            json = "=" + json;
+
+            string path = "";
+            path = information.URL + "/api/automation/getAll";
+
+            string response = ApiConnector.SendToApi(path, json);
+            currentAutomation = JsonConvert.DeserializeObject<List<Automation>>(response);
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -105,6 +124,25 @@ namespace PamDesktop
         private void label2_Click_1(object sender, EventArgs e)
         {
             //Mistakenly made - ignore
+        }
+
+        private void lstServerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Server ser = servers[lstServerList.SelectedIndex];
+                getAutomation(ser.ServerOsId);
+                // Doesnt work....cmbAutomationList.Refresh();
+                cmbAutomationList.DataSource = null;
+                cmbAutomationList.DataSource = currentAutomation;
+                cmbAutomationList.DisplayMember = "ScriptName";
+                cmbAutomationList.ValueMember = "AutomationScriptId";
+            }
+            catch (Exception)
+            {
+
+            }
+           
         }
     }
 }

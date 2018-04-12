@@ -88,6 +88,7 @@
             // 
             // btnAccountSettings
             // 
+            this.btnAccountSettings.Enabled = false;
             this.btnAccountSettings.Location = new System.Drawing.Point(15, 43);
             this.btnAccountSettings.Name = "btnAccountSettings";
             this.btnAccountSettings.Size = new System.Drawing.Size(106, 23);
@@ -97,6 +98,7 @@
             // 
             // btnManageServers
             // 
+            this.btnManageServers.Enabled = false;
             this.btnManageServers.Location = new System.Drawing.Point(170, 578);
             this.btnManageServers.Name = "btnManageServers";
             this.btnManageServers.Size = new System.Drawing.Size(130, 23);
@@ -106,6 +108,7 @@
             // 
             // btnManageUsers
             // 
+            this.btnManageUsers.Enabled = false;
             this.btnManageUsers.Location = new System.Drawing.Point(15, 549);
             this.btnManageUsers.Name = "btnManageUsers";
             this.btnManageUsers.Size = new System.Drawing.Size(130, 23);
@@ -115,6 +118,7 @@
             // 
             // btnManagePasswords
             // 
+            this.btnManagePasswords.Enabled = false;
             this.btnManagePasswords.Location = new System.Drawing.Point(15, 578);
             this.btnManagePasswords.Name = "btnManagePasswords";
             this.btnManagePasswords.Size = new System.Drawing.Size(130, 23);
@@ -129,6 +133,7 @@
             this.lstServerList.Name = "lstServerList";
             this.lstServerList.Size = new System.Drawing.Size(284, 160);
             this.lstServerList.TabIndex = 8;
+            this.lstServerList.SelectedIndexChanged += new System.EventHandler(this.lstServerList_SelectedIndexChanged);
             // 
             // lstAccountsList
             // 

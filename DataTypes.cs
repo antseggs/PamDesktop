@@ -90,4 +90,14 @@ namespace PamDesktop
         public int? AccountGroupId { get; set; }
         public string Note { get; set; }
     }
+
+    public class Automation
+    {
+        public string ScriptName { get; set; }
+        public int? ServerOsId { get; set; }
+        public string ScriptText { get; set; }
+        public int? ServerAccessLevelId { get; set; }
+        public DateTime LastUpdate { get; set; }
+        public int AutomationScriptId { get; set; }
+    }
 }
