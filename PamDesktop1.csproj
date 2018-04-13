@@ -134,6 +134,12 @@
   <ItemGroup>
     <Compile Include="ApiConnector.cs" />
     <Compile Include="DataTypes.cs" />
+    <Compile Include="PasswordView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordView.Designer.cs">
+      <DependentUpon>PasswordView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServerView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SshConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SshConnectionForm.Designer.cs">
+      <DependentUpon>SshConnectionForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="PasswordView.resx">
+      <DependentUpon>PasswordView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServerView.resx">
       <DependentUpon>ServerView.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +178,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SshConnectionForm.resx">
+      <DependentUpon>SshConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

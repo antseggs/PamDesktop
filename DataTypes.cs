@@ -100,4 +100,33 @@ namespace PamDesktop
         public DateTime LastUpdate { get; set; }
         public int AutomationScriptId { get; set; }
     }
+
+    public class ProtectedAccount
+    {
+        public int ProtectedAccountId { get; set; }
+        public string AccountName { get; set; }
+        public int ServerId { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public int AccountGroupId { get; set; }
+        public string Note { get; set; }
+    }
+
+    public class SshSessionDetails
+    {
+        public string ServerIp { get; set; }
+        public int Port { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class SshLog : LoggedInType
+    {
+        public int UserId { get; set; }
+        public string LogContent { get; set; }
+        public int PermissionLevelId { get; set; }
+        public string FinishTime { get; set; }
+        public string UserNote { get; set; }
+        public int ProtectedAccountId { get; set; }
+    }
 }

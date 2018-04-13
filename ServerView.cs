@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Renci.SshNet;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ namespace PamDesktop
         List<Server> servers = new List<Server>();
         List<StandardAccount> passwords = new List<StandardAccount>();
         List<Automation> currentAutomation = new List<Automation>();
-
+        List<ServerAccessLevel> serverList = new List<ServerAccessLevel>();
 
         public ServerView(ProgramInfo info)
         {
@@ -42,7 +43,6 @@ namespace PamDesktop
             path = information.URL + "/api/protectedAccount/getAll";
 
             string response = ApiConnector.SendToApi(path, json);
-            List<ServerAccessLevel> serverList = new List<ServerAccessLevel>();
             serverList = JsonConvert.DeserializeObject<List<ServerAccessLevel>>(response);
 
             // Load in all appropriate server details
@@ -143,6 +143,90 @@ namespace PamDesktop
 
             }
            
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnViewPassword_Click(object sender, EventArgs e)
+        {
+            var selectedAccount = passwords[lstServerList.SelectedIndex];
+            PasswordView passwordView = new PasswordView(selectedAccount,false);
+            passwordView.ShowDialog();
+        }
+
+        private void btnRunAutomation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GetAccessLevel current = new GetAccessLevel();
+                current.SessionKey = information.Token;
+                current.Id = servers[lstServerList.SelectedIndex].ServerOsId;
+
+                string json = "";
+                json = JsonConvert.SerializeObject(current);
+                json = "=" + json;
+
+                string path = "";
+                path = information.URL + "/api/protectedAccount/get";
+
+                string response = ApiConnector.SendToApi(path, json);
+                ProtectedAccount acc = JsonConvert.DeserializeObject<ProtectedAccount>(response);
+
+                SshClient currentSession = new SshClient(servers[lstServerList.SelectedIndex].ServerIp, 22, acc.Username, acc.Password);
+                currentSession.Connect();
+
+                // get the automation script!
+                currentSession.RunCommand(currentAutomation[cmbAutomationList.SelectedIndex].ScriptText);
+
+                // close session 
+                currentSession.Disconnect();
+
+                // show success message box!
+                MessageBox.Show("Successfully Completed Automation!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An Error Occorred Running this automation for more info: " + ex);
+            }
+            
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GetAccessLevel current = new GetAccessLevel();
+                current.SessionKey = information.Token;
+                current.Id = servers[lstServerList.SelectedIndex].ServerOsId;
+
+                string json = "";
+                json = JsonConvert.SerializeObject(current);
+                json = "=" + json;
+
+                string path = "";
+                path = information.URL + "/api/protectedAccount/get";
+
+                string response = ApiConnector.SendToApi(path, json);
+                ProtectedAccount acc = JsonConvert.DeserializeObject<ProtectedAccount>(response);
+
+                SshSessionDetails details = new SshSessionDetails
+                {
+                    ServerIp = servers[lstServerList.SelectedIndex].ServerIp,
+                    Port = 22,
+                    Username = acc.Username,
+                    Password = acc.Password
+                };
+
+                SshConnectionForm sshCon = new SshConnectionForm(details, information);
+                sshCon.ShowDialog();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error connecting to server. Check the server is on.");
+            }
         }
     }
 }

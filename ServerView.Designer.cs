@@ -45,6 +45,7 @@
             this.cmbAutomationList = new System.Windows.Forms.ComboBox();
             this.btnRunAutomation = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.btnViewLogs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -70,7 +71,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 603);
+            this.label3.Location = new System.Drawing.Point(28, 627);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(256, 13);
             this.label3.TabIndex = 2;
@@ -85,6 +86,7 @@
             this.btnConnect.TabIndex = 3;
             this.btnConnect.Text = "Start Connection";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // btnAccountSettings
             // 
@@ -99,7 +101,7 @@
             // btnManageServers
             // 
             this.btnManageServers.Enabled = false;
-            this.btnManageServers.Location = new System.Drawing.Point(170, 578);
+            this.btnManageServers.Location = new System.Drawing.Point(169, 563);
             this.btnManageServers.Name = "btnManageServers";
             this.btnManageServers.Size = new System.Drawing.Size(130, 23);
             this.btnManageServers.TabIndex = 5;
@@ -109,7 +111,7 @@
             // btnManageUsers
             // 
             this.btnManageUsers.Enabled = false;
-            this.btnManageUsers.Location = new System.Drawing.Point(15, 549);
+            this.btnManageUsers.Location = new System.Drawing.Point(14, 534);
             this.btnManageUsers.Name = "btnManageUsers";
             this.btnManageUsers.Size = new System.Drawing.Size(130, 23);
             this.btnManageUsers.TabIndex = 6;
@@ -119,7 +121,7 @@
             // btnManagePasswords
             // 
             this.btnManagePasswords.Enabled = false;
-            this.btnManagePasswords.Location = new System.Drawing.Point(15, 578);
+            this.btnManagePasswords.Location = new System.Drawing.Point(14, 563);
             this.btnManagePasswords.Name = "btnManagePasswords";
             this.btnManagePasswords.Size = new System.Drawing.Size(130, 23);
             this.btnManagePasswords.TabIndex = 7;
@@ -151,6 +153,7 @@
             this.btnViewPassword.TabIndex = 10;
             this.btnViewPassword.Text = "View Password";
             this.btnViewPassword.UseVisualStyleBackColor = true;
+            this.btnViewPassword.Click += new System.EventHandler(this.btnViewPassword_Click);
             // 
             // label2
             // 
@@ -196,21 +199,34 @@
             this.btnRunAutomation.TabIndex = 15;
             this.btnRunAutomation.Text = "Run Automation";
             this.btnRunAutomation.UseVisualStyleBackColor = true;
+            this.btnRunAutomation.Click += new System.EventHandler(this.btnRunAutomation_Click);
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Location = new System.Drawing.Point(170, 549);
+            this.btnLogOut.Location = new System.Drawing.Point(14, 601);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(130, 23);
+            this.btnLogOut.Size = new System.Drawing.Size(286, 23);
             this.btnLogOut.TabIndex = 16;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
+            // btnViewLogs
+            // 
+            this.btnViewLogs.Enabled = false;
+            this.btnViewLogs.Location = new System.Drawing.Point(170, 534);
+            this.btnViewLogs.Name = "btnViewLogs";
+            this.btnViewLogs.Size = new System.Drawing.Size(130, 23);
+            this.btnViewLogs.TabIndex = 17;
+            this.btnViewLogs.Text = "View Logs";
+            this.btnViewLogs.UseVisualStyleBackColor = true;
             // 
             // ServerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 627);
+            this.ClientSize = new System.Drawing.Size(312, 649);
+            this.Controls.Add(this.btnViewLogs);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnRunAutomation);
             this.Controls.Add(this.cmbAutomationList);
@@ -255,6 +271,7 @@
         private System.Windows.Forms.ComboBox cmbAutomationList;
         private System.Windows.Forms.Button btnRunAutomation;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Button btnViewLogs;
     }
 }
 

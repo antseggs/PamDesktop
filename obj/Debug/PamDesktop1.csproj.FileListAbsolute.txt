@@ -134,3 +134,5 @@ C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.csproj
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.exe
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.pdb
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.ServerView.resources
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.PasswordView.resources
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.SshConnectionForm.resources
