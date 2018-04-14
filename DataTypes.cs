@@ -129,4 +129,14 @@ namespace PamDesktop
         public string UserNote { get; set; }
         public int ProtectedAccountId { get; set; }
     }
+
+    public class DesktopLog : LoggedInType
+    {
+        public int UserId { get; set; }
+        public string LogContentLocation { get; set; }
+        public int PermissionLevelId { get; set; }
+        public string FinishTime { get; set; }
+        public string UserNote { get; set; }
+        public int ProtectedAccountId { get; set; }
+    }
 }

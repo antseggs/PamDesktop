@@ -196,37 +196,48 @@ namespace PamDesktop
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            try
+            //Decide if the server is SSH or VNC
+            if (servers[lstServerList.SelectedIndex].ServerOsId == 3 || servers[lstServerList.SelectedIndex].ServerOsId == 4 || servers[lstServerList.SelectedIndex].ServerOsId == 5 || servers[lstServerList.SelectedIndex].ServerOsId == 6)
             {
-                GetAccessLevel current = new GetAccessLevel();
-                current.SessionKey = information.Token;
-                current.Id = servers[lstServerList.SelectedIndex].ServerOsId;
-
-                string json = "";
-                json = JsonConvert.SerializeObject(current);
-                json = "=" + json;
-
-                string path = "";
-                path = information.URL + "/api/protectedAccount/get";
-
-                string response = ApiConnector.SendToApi(path, json);
-                ProtectedAccount acc = JsonConvert.DeserializeObject<ProtectedAccount>(response);
-
-                SshSessionDetails details = new SshSessionDetails
+                try
                 {
-                    ServerIp = servers[lstServerList.SelectedIndex].ServerIp,
-                    Port = 22,
-                    Username = acc.Username,
-                    Password = acc.Password
-                };
+                    // Start SSH session
+                    GetAccessLevel current = new GetAccessLevel();
+                    current.SessionKey = information.Token;
+                    current.Id = servers[lstServerList.SelectedIndex].ServerOsId;
 
-                SshConnectionForm sshCon = new SshConnectionForm(details, information);
-                sshCon.ShowDialog();
-            }
-            catch (Exception)
+                    string json = "";
+                    json = JsonConvert.SerializeObject(current);
+                    json = "=" + json;
+
+                    string path = "";
+                    path = information.URL + "/api/protectedAccount/get";
+
+                    string response = ApiConnector.SendToApi(path, json);
+                    ProtectedAccount acc = JsonConvert.DeserializeObject<ProtectedAccount>(response);
+
+                    SshSessionDetails details = new SshSessionDetails
+                    {
+                        ServerIp = servers[lstServerList.SelectedIndex].ServerIp,
+                        Port = 22,
+                        Username = acc.Username,
+                        Password = acc.Password
+                    };
+
+                    SshConnectionForm sshCon = new SshConnectionForm(details, information);
+                    sshCon.ShowDialog();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error connecting to server. Check the server is on.");
+                }
+            }else
             {
-                MessageBox.Show("Error connecting to server. Check the server is on.");
+                // Start VNC session
+
             }
+
+            
         }
     }
 }

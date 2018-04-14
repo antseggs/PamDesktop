@@ -56,12 +56,6 @@
     <Reference Include="Novell.Directory.Ldap.NETStandard, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Novell.Directory.Ldap.NETStandard2_0.3.1.0\lib\netstandard2.0\Novell.Directory.Ldap.NETStandard.dll</HintPath>
     </Reference>
-    <Reference Include="RemoteViewing, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\RemoteViewing.0.9.1\lib\RemoteViewing.dll</HintPath>
-    </Reference>
-    <Reference Include="RemoteViewing.Windows.Forms, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\RemoteViewing.0.9.1\lib\RemoteViewing.Windows.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -160,6 +154,12 @@
     <Compile Include="SshConnectionForm.Designer.cs">
       <DependentUpon>SshConnectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="VncWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VncWindow.Designer.cs">
+      <DependentUpon>VncWindow.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="PasswordView.resx">
       <DependentUpon>PasswordView.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +181,9 @@
     <EmbeddedResource Include="SshConnectionForm.resx">
       <DependentUpon>SshConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VncWindow.resx">
+      <DependentUpon>VncWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -194,6 +197,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxMSTSCLib">
+      <Guid>{8C11EFA1-92C3-11D1-BC1E-00C04FA31489}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="MSTSCLib">
+      <Guid>{8C11EFA1-92C3-11D1-BC1E-00C04FA31489}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

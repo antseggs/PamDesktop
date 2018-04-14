@@ -35,7 +35,7 @@ namespace PamDesktop
             current.UserId = information.UserId;
             current.LogContent = txtConsole.Text;
             current.PermissionLevelId = 1;
-            current.FinishTime = DateTime.Now.AddHours(12).ToString("yyy-MM-dd HH:mm:ss.fff");
+            current.FinishTime = DateTime.Now.ToString("yyy-MM-dd HH:mm:ss.fff");
             current.UserNote = "";
             current.ProtectedAccountId = 2;
 
