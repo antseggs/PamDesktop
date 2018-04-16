@@ -62,7 +62,7 @@ namespace PamDesktop
             current.UserId = information.UserId;
             current.LogContentLocation = ""; // FILL THIS IN...
             current.PermissionLevelId = 1;
-            current.FinishTime = DateTime.Now.ToString("yyy-MM-dd HH:mm:ss.fff");
+            current.FinishTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
             current.UserNote = "";
             current.ProtectedAccountId = 2;
 

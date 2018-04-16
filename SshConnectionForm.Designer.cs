@@ -45,7 +45,7 @@
             this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtConsole.Size = new System.Drawing.Size(800, 409);
             this.txtConsole.TabIndex = 0;
-            this.txtConsole.Text = "Starting Connection... (Please Wait...)";
+            this.txtConsole.Text = "Starting Connection... \r\nConnection Started!\r\n#\r\n";
             // 
             // txtCommand
             // 
@@ -74,7 +74,7 @@
             this.btnFinishSession.UseVisualStyleBackColor = true;
             this.btnFinishSession.Click += new System.EventHandler(this.btnFinishSession_Click);
             // 
-            // SshConnection
+            // SshConnectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,8 +83,8 @@
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtCommand);
             this.Controls.Add(this.txtConsole);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SshConnection";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "SshConnectionForm";
             this.Text = "SshConnection";
             this.Load += new System.EventHandler(this.SshConnection_Load);
             this.ResumeLayout(false);

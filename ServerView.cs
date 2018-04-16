@@ -227,14 +227,44 @@ namespace PamDesktop
                     SshConnectionForm sshCon = new SshConnectionForm(details, information);
                     sshCon.ShowDialog();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error connecting to server. Check the server is on.");
                 }
             }else
             {
                 // Start VNC session
+                try
+                {
+                    GetAccessLevel current = new GetAccessLevel();
+                    current.SessionKey = information.Token;
+                    current.Id = servers[lstServerList.SelectedIndex].ServerOsId;
 
+                    string json = "";
+                    json = JsonConvert.SerializeObject(current);
+                    json = "=" + json;
+
+                    string path = "";
+                    path = information.URL + "/api/protectedAccount/get";
+
+                    string response = ApiConnector.SendToApi(path, json);
+                    ProtectedAccount acc = JsonConvert.DeserializeObject<ProtectedAccount>(response);
+
+                    SshSessionDetails details = new SshSessionDetails
+                    {
+                        ServerIp = servers[lstServerList.SelectedIndex].ServerIp,
+                        Port = 22,
+                        Username = acc.Username,
+                        Password = acc.Password
+                    };
+
+                    VncWindow rdp = new VncWindow(details, information);
+                    rdp.ShowDialog();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error connecting to server. Check the server is on.");
+                }
             }
 
             

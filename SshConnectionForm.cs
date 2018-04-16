@@ -66,7 +66,7 @@ namespace PamDesktop
                 currentSession = new SshClient(details.ServerIp, details.Port, details.Username, details.Password);
                 currentSession.Connect();
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Error in connecting with the server. Ensure the server is turned on!");
             }

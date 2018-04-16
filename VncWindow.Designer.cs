@@ -58,12 +58,12 @@
             this.rdp.Location = new System.Drawing.Point(-1, -3);
             this.rdp.Name = "rdp";
             this.rdp.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("rdp.OcxState")));
-            this.rdp.Size = new System.Drawing.Size(802, 429);
+            this.rdp.Size = new System.Drawing.Size(1097, 587);
             this.rdp.TabIndex = 0;
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(696, 432);
+            this.btnQuit.Location = new System.Drawing.Point(992, 590);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(92, 23);
             this.btnQuit.TabIndex = 1;
@@ -75,10 +75,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 466);
+            this.ClientSize = new System.Drawing.Size(1096, 623);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.rdp);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "VncWindow";
             this.Text = "VncWindow";
             this.Load += new System.EventHandler(this.VncWindow_Load);

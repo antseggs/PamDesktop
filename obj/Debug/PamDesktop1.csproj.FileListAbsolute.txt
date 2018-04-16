@@ -110,8 +110,6 @@ C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Microsoft.Extensio
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Microsoft.Extensions.Primitives.dll
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Newtonsoft.Json.dll
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Novell.Directory.Ldap.NETStandard.dll
-C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\RemoteViewing.dll
-C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\RemoteViewing.Windows.Forms.dll
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Renci.SshNet.dll
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\System.Reflection.TypeExtensions.dll
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
@@ -123,10 +121,6 @@ C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Microsoft.Extensio
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Microsoft.Extensions.Primitives.xml
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Newtonsoft.Json.xml
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Novell.Directory.Ldap.NETStandard.xml
-C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\RemoteViewing.pdb
-C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\RemoteViewing.xml
-C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\RemoteViewing.Windows.Forms.pdb
-C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\RemoteViewing.Windows.Forms.xml
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Renci.SshNet.xml
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.exe.config
@@ -136,3 +130,9 @@ C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.pdb
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.ServerView.resources
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.PasswordView.resources
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.SshConnectionForm.resources
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Interop.MSTSCLib.dll
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\AxInterop.MSTSCLib.dll
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\Interop.MSTSCLib.dll
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\AxInterop.MSTSCLib.dll
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop1.csproj.ResolveComReference.cache
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.VncWindow.resources
