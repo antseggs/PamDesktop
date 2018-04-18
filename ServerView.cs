@@ -152,9 +152,16 @@ namespace PamDesktop
 
         private void btnViewPassword_Click(object sender, EventArgs e)
         {
-            var selectedAccount = passwords[lstServerList.SelectedIndex];
-            PasswordView passwordView = new PasswordView(selectedAccount,false);
-            passwordView.ShowDialog();
+            try
+            {
+                var selectedAccount = passwords[lstAccountsList.SelectedIndex];
+                PasswordView passwordView = new PasswordView(selectedAccount, false);
+                passwordView.ShowDialog();
+            }
+            catch
+            {
+                MessageBox.Show("Error in loading password, please try again!");
+            }
         }
 
         private void btnRunAutomation_Click(object sender, EventArgs e)

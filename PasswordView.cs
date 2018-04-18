@@ -37,5 +37,10 @@ namespace PamDesktop
         {
 
         }
+
+        private void PasswordView_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

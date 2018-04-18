@@ -179,6 +179,7 @@
             this.Name = "PasswordView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PasswordView";
+            this.Load += new System.EventHandler(this.PasswordView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
