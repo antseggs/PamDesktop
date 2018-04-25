@@ -23,7 +23,7 @@ namespace PamDesktop
         ProgramInfo information;
         Timer timer1 = new Timer();
         VideoFileWriter vf;
-        String timeStamp = DateTime.Now.ToString();
+        String timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
 
         public VncWindow(SshSessionDetails conn, ProgramInfo info)
         {
@@ -46,7 +46,7 @@ namespace PamDesktop
                 timer1.Interval = 20;
                 timer1.Tick += Timer1_Tick;
                 vf = new VideoFileWriter();
-                vf.Open(Path.GetTempPath() + "Session.avi", Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, 25, VideoCodec.MPEG4, 1000000);
+                vf.Open(Path.GetTempPath() + timeStamp + ".avi", Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, 25, VideoCodec.MPEG4, 1000000);
                 timer1.Start();
             }
             catch (Exception ex)
@@ -63,10 +63,10 @@ namespace PamDesktop
             {
                 var bp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
                 var gr = Graphics.FromImage(bp);
-                gr.CopyFromScreen(0, 0, 0, 0, new Size(bp.Width, bp.Height));
+                gr.CopyFromScreen(0, 0, 0, 0, bp.Size);
                 vf.WriteVideoFrame(bp);
             }
-            catch
+            catch (Exception ex)
             {
                 // catch exceptions
             }
@@ -83,10 +83,30 @@ namespace PamDesktop
                     timer1.Stop();
                     vf.Close();
                     // Move recording to blob storage
-                    ScpClient currentScp = new ScpClient("92.233.50.207", "administrator", "test");
-                    currentScp.Connect();
-                    currentScp.Upload(new System.IO.DirectoryInfo(Path.GetTempPath() + "Session.avi"), "/recordings/" + timeStamp + ".avi");
-                    currentScp.Disconnect();
+                    var location = new System.IO.DirectoryInfo(Path.GetTempPath() + timeStamp + ".avi");
+                    FileInfo f = new FileInfo(location.ToString());
+                    string uploadfile = f.FullName;
+                    var client = new SftpClient("92.233.50.207", 22, "root", "toor");
+                    client.Connect();
+                        client.ChangeDirectory("/Recordings");
+                        var fileStream = new FileStream(uploadfile, FileMode.Open);
+                        client.BufferSize = 4 * 1024;
+                        client.UploadFile(fileStream, f.Name, null);
+                    client.Disconnect();
+                    client.Dispose();
+
+                    //using (var scp = new ScpClient("92.233.50.207", "root", "toor"))
+                    //{
+                    //    scp.Connect();
+                    //    var location = new System.IO.DirectoryInfo(Path.GetTempPath() + timeStamp + ".avi");
+                    //    scp.Upload(location, "/recordings " + timeStamp + ".avi");
+                    //}
+
+                    //ScpClient currentScp = new ScpClient("92.233.50.207", "administrator", "test");
+                    //currentScp.Connect();
+                    //var location = new System.IO.DirectoryInfo(Path.GetTempPath() + timeStamp + ".avi");
+                    //currentScp.Upload(location, "/recordings " + timeStamp + ".avi");
+                    //currentScp.Disconnect();
                 }
             }
             catch (Exception ex)
