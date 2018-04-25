@@ -12,8 +12,7 @@ using System.Windows.Forms;
 using Accord.Video.FFMPEG;
 using MSTSCLib;
 using Newtonsoft.Json;
-
-
+using Renci.SshNet;
 
 namespace PamDesktop
 {
@@ -24,6 +23,7 @@ namespace PamDesktop
         ProgramInfo information;
         Timer timer1 = new Timer();
         VideoFileWriter vf;
+        String timeStamp = DateTime.Now.ToString();
 
         public VncWindow(SshSessionDetails conn, ProgramInfo info)
         {
@@ -59,10 +59,18 @@ namespace PamDesktop
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            var bp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            var gr = Graphics.FromImage(bp);
-            gr.CopyFromScreen(0, 0, 0, 0, new Size(bp.Width, bp.Height));
-            vf.WriteVideoFrame(bp);
+            try
+            {
+                var bp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                var gr = Graphics.FromImage(bp);
+                gr.CopyFromScreen(0, 0, 0, 0, new Size(bp.Width, bp.Height));
+                vf.WriteVideoFrame(bp);
+            }
+            catch
+            {
+                // catch exceptions
+            }
+           
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
@@ -75,7 +83,10 @@ namespace PamDesktop
                     timer1.Stop();
                     vf.Close();
                     // Move recording to blob storage
-
+                    ScpClient currentScp = new ScpClient("92.233.50.207", "administrator", "test");
+                    currentScp.Connect();
+                    currentScp.Upload(new System.IO.DirectoryInfo(Path.GetTempPath() + "Session.avi"), "/recordings/" + timeStamp + ".avi");
+                    currentScp.Disconnect();
                 }
             }
             catch (Exception ex)
@@ -88,7 +99,7 @@ namespace PamDesktop
             // Ship the Log!
             current.SessionKey = information.Token;
             current.UserId = information.UserId;
-            current.LogContentLocation = ""; // FILL THIS IN...
+            current.LogContentLocation = timeStamp + ".avi";
             current.PermissionLevelId = 1;
             current.FinishTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
             current.UserNote = "";
