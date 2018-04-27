@@ -107,6 +107,7 @@
             this.btnManageServers.TabIndex = 5;
             this.btnManageServers.Text = "Manage Servers ";
             this.btnManageServers.UseVisualStyleBackColor = true;
+            this.btnManageServers.Click += new System.EventHandler(this.btnManageServers_Click);
             // 
             // btnManageUsers
             // 
@@ -117,6 +118,7 @@
             this.btnManageUsers.TabIndex = 6;
             this.btnManageUsers.Text = "Manage Users";
             this.btnManageUsers.UseVisualStyleBackColor = true;
+            this.btnManageUsers.Click += new System.EventHandler(this.btnManageUsers_Click);
             // 
             // btnManagePasswords
             // 

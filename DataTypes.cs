@@ -46,6 +46,20 @@ namespace PamDesktop
         public string Note { get; set; }
     }
 
+    public class UserRemoveOrEdit : LoggedInType
+    {
+        public int UserId { get; set; }
+        public int PermissionLevelId { get; set; }
+        public string FirstName { get; set; }
+        public string Surname { get; set; }
+        public string JobTitle { get; set; }
+        public int DepartmentId { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public DateTime LastLoginDate { get; set; }
+        public string Note { get; set; }
+    }
+
     public class UserReturn : LoggedInType
     {
         //Used to add the token
@@ -138,5 +152,11 @@ namespace PamDesktop
         public string FinishTime { get; set; }
         public string UserNote { get; set; }
         public int ProtectedAccountId { get; set; }
+    }
+
+    public class AccessType
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

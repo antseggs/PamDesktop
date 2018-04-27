@@ -92,6 +92,28 @@ namespace PamDesktop
             cmbAutomationList.DataSource = currentAutomation;
             cmbAutomationList.DisplayMember = "ScriptName";
             cmbAutomationList.ValueMember = "AutomationScriptId";
+
+            // If admin then enable the user management, server management, view logs
+            UserGeneral temp = new UserGeneral();
+            current.SessionKey = information.Token;
+            current.Id = information.UserId;
+            
+            json = JsonConvert.SerializeObject(current);
+            json = "=" + json;
+           
+            path = information.URL + "/api/users/getSelf";
+
+            response = ApiConnector.SendToApi(path, json);
+            temp = JsonConvert.DeserializeObject<UserGeneral>(response);
+
+            if (temp.PermissionLevelId == 1 || temp.PermissionLevelId == 2)
+            {
+                btnAccountSettings.Enabled = true;
+                btnManageUsers.Enabled = true;
+                btnManagePasswords.Enabled = true;
+                btnViewLogs.Enabled = true;
+                btnManageServers.Enabled = true;
+            }
         }
 
         private void getAutomation(int? serverOsId)
@@ -155,8 +177,29 @@ namespace PamDesktop
             try
             {
                 var selectedAccount = passwords[lstAccountsList.SelectedIndex];
-                PasswordView passwordView = new PasswordView(selectedAccount, false);
-                passwordView.ShowDialog();
+                UserGeneral temp = new UserGeneral();
+                GetAccessLevel current = new GetAccessLevel();
+                current.SessionKey = information.Token;
+                current.Id = information.UserId;
+
+                var json = JsonConvert.SerializeObject(current);
+                json = "=" + json;
+
+                var path = information.URL + "/api/users/getSelf";
+
+                var response = ApiConnector.SendToApi(path, json);
+                temp = JsonConvert.DeserializeObject<UserGeneral>(response);
+
+                if (temp.PermissionLevelId == 1 || temp.PermissionLevelId == 2)
+                {
+                    PasswordView passwordView = new PasswordView(selectedAccount, true);
+                    passwordView.ShowDialog();
+                }
+                else
+                {
+                    PasswordView passwordView = new PasswordView(selectedAccount, false);
+                    passwordView.ShowDialog();
+                }
             }
             catch
             {
@@ -275,6 +318,17 @@ namespace PamDesktop
             }
 
             
+        }
+
+        private void btnManageServers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnManageUsers_Click(object sender, EventArgs e)
+        {
+            ViewUsers form = new ViewUsers(information);
+            form.ShowDialog();
         }
     }
 }

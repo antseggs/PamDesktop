@@ -139,6 +139,18 @@
   <ItemGroup>
     <Compile Include="ApiConnector.cs" />
     <Compile Include="DataTypes.cs" />
+    <Compile Include="EditOrAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditOrAddUser.Designer.cs">
+      <DependentUpon>EditOrAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogViewer.Designer.cs">
+      <DependentUpon>LogViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,12 +177,21 @@
     <Compile Include="SshConnectionForm.Designer.cs">
       <DependentUpon>SshConnectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewUsers.Designer.cs">
+      <DependentUpon>ViewUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="VncWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VncWindow.Designer.cs">
       <DependentUpon>VncWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditOrAddUser.resx">
+      <DependentUpon>EditOrAddUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PasswordView.resx">
       <DependentUpon>PasswordView.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +212,9 @@
     </Compile>
     <EmbeddedResource Include="SshConnectionForm.resx">
       <DependentUpon>SshConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewUsers.resx">
+      <DependentUpon>ViewUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VncWindow.resx">
       <DependentUpon>VncWindow.cs</DependentUpon>
