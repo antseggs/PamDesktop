@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -75,6 +76,7 @@ namespace PamDesktop
                 cmbAccessLevel.SelectedIndex = current.PermissionLevelId - 1;
                 cmbDepartments.SelectedIndex = current.DepartmentId - 1;
                 txtUsername.Text = current.Username;
+                txtUsername.Enabled = false;
                 txtNotes.Text = current.Note;
             }
             else
@@ -87,63 +89,81 @@ namespace PamDesktop
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(btnSave.Text == "Save")
+            try
             {
-                // Add new user
-                UserRemoveOrEdit newUser = new UserRemoveOrEdit();
-                newUser.UserId = -1;
-                newUser.SessionKey = information.Token;
-                newUser.PermissionLevelId = cmbAccessLevel.SelectedIndex -1 ;
-                newUser.FirstName = txtFirstName.Text;
-                newUser.Surname = txtSurname.Text;
-                newUser.JobTitle = txtJobTitle.Text;
-                newUser.DepartmentId = cmbDepartments.SelectedIndex -1;
-                newUser.Password = txtPassword.Text;
-                newUser.LastLoginDate = DateTime.Now;
-                newUser.Note = txtNotes.Text;
-
-                // Send off to the API
-                var json = JsonConvert.SerializeObject(newUser);
-                json = "=" + json;
-
-                var path = information.URL + "/api/users";
-
-                var response = ApiConnector.SendToApi(path, json);
-
-                if (response == "\"Passed!\"")
+                if (btnSave.Text == "Save")
                 {
-                    MessageBox.Show("User added!");
+                    // Add new user
+                    UserRemoveOrEdit newUser = new UserRemoveOrEdit();
+                    newUser.UserId = -1;
+                    newUser.SessionKey = information.Token;
+                    newUser.PermissionLevelId = cmbAccessLevel.SelectedIndex + 1;
+                    newUser.FirstName = txtFirstName.Text;
+                    newUser.Surname = txtSurname.Text;
+                    newUser.JobTitle = txtJobTitle.Text;
+                    newUser.DepartmentId = cmbDepartments.SelectedIndex + 1;
+                    newUser.Username = txtUsername.Text;
+
+                    //SALT AND HASH! // Do this! /// Dont ignore it! //********************************
+                    HashAlgorithm algo = new SHA256Managed();
+                    var hash = algo.ComputeHash(Encoding.ASCII.GetBytes("quis" + txtPassword.Text + "quam"));
+                    string hexHash = "";
+                    for (int i = 0; i < hash.Length; i++)
+                    {
+                        hexHash = hexHash + hash[i].ToString();
+                    }
+                    newUser.Password = hexHash;
+
+                    newUser.LastLoginDate = DateTime.Now.ToString("yyy-MM-dd HH:mm:ss.fff");
+                    newUser.Note = txtNotes.Text;
+
+                    // Send off to the API
+                    var json = JsonConvert.SerializeObject(newUser);
+                    json = "=" + json;
+
+                    var path = information.URL + "/api/users";
+
+                    var response = ApiConnector.SendToApi(path, json);
+
+                    if (response == "\"Passed!\"")
+                    {
+                        MessageBox.Show("User added!");
+                    }
                 }
+                else
+                {
+                    // Update User
+                    UserRemoveOrEdit newUser = new UserRemoveOrEdit();
+                    newUser.UserId = Int32.Parse(txtUserId.Text);
+                    newUser.SessionKey = information.Token;
+                    newUser.PermissionLevelId = cmbAccessLevel.SelectedIndex + 1;
+                    newUser.FirstName = txtFirstName.Text;
+                    newUser.Surname = txtSurname.Text;
+                    newUser.JobTitle = txtJobTitle.Text;
+                    newUser.DepartmentId = cmbDepartments.SelectedIndex + 1;
+                    newUser.Password = current.Password;
+                    newUser.LastLoginDate = DateTime.Now.ToString("yyy-MM-dd HH:mm:ss.fff");
+                    newUser.Note = txtNotes.Text;
+
+                    // Send off to the API
+                    var json = JsonConvert.SerializeObject(newUser);
+                    json = "=" + json;
+
+                    var path = information.URL + "/api/users";
+
+                    var response = ApiConnector.SendToApi(path, json);
+
+                    if (response == "\"Passed!\"")
+                    {
+                        MessageBox.Show("User Updated!");
+                    }
+                }
+                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-                // Update User
-                UserRemoveOrEdit newUser = new UserRemoveOrEdit();
-                newUser.UserId = Int32.Parse(txtUserId.Text);
-                newUser.SessionKey = information.Token;
-                newUser.PermissionLevelId = cmbAccessLevel.SelectedIndex - 1;
-                newUser.FirstName = txtFirstName.Text;
-                newUser.Surname = txtSurname.Text;
-                newUser.JobTitle = txtJobTitle.Text;
-                newUser.DepartmentId = cmbDepartments.SelectedIndex -1;
-                newUser.Password = txtPassword.Text;
-                newUser.LastLoginDate = DateTime.Now;
-                newUser.Note = txtNotes.Text;
 
-                // Send off to the API
-                var json = JsonConvert.SerializeObject(newUser);
-                json = "=" + json;
-
-                var path = information.URL + "/api/users";
-
-                var response = ApiConnector.SendToApi(path, json);
-
-                if (response == "\"Passed!\"")
-                {
-                    MessageBox.Show("User Updated!");
-                }
             }
-            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
