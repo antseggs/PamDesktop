@@ -330,5 +330,34 @@ namespace PamDesktop
             ViewUsers form = new ViewUsers(information);
             form.ShowDialog();
         }
+
+        private void btnAccountSettings_Click(object sender, EventArgs e)
+        {
+            GetAccessLevel current = new GetAccessLevel();
+            current.SessionKey = information.Token;
+            current.Id = information.UserId;
+
+            string json = "";
+            json = JsonConvert.SerializeObject(current);
+            json = "=" + json;
+
+            string path = "";
+            path = information.URL + "/api/users/getAll";
+
+            string response = ApiConnector.SendToApi(path, json);
+            var userList = JsonConvert.DeserializeObject<List<UserGeneral>>(response);
+
+            UserGeneral yourSelf = new UserGeneral();
+            foreach (UserGeneral us in userList)
+            {
+                if(us.UserId == information.UserId)
+                {
+                    yourSelf = us;
+                }
+            }
+
+            EditOrAddUser form = new EditOrAddUser(information, yourSelf);
+            form.Show();
+        }
     }
 }

@@ -97,6 +97,7 @@
             this.btnAccountSettings.TabIndex = 4;
             this.btnAccountSettings.Text = "Account Settings";
             this.btnAccountSettings.UseVisualStyleBackColor = true;
+            this.btnAccountSettings.Click += new System.EventHandler(this.btnAccountSettings_Click);
             // 
             // btnManageServers
             // 
