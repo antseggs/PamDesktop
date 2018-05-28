@@ -82,6 +82,11 @@ namespace PamDesktop
         public bool? Allowed { get; set; }
     }
 
+    public class ServerAccessLogedIn : ServerAccessLevel
+    {
+        public string SessionKey {get; set;}
+    }
+
     public class Server
     {
         public int ServerId { get; set; }
@@ -92,6 +97,11 @@ namespace PamDesktop
         public string Fqdn { get; set; }
         public string ServerNote { get; set; }
         public bool IpStatic { get; set; }
+    }
+
+    public class ServerShip : Server
+    {
+        public string SessionKey { get; set; }
     }
 
     public class StandardAccount

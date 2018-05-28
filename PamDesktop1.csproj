@@ -139,6 +139,12 @@
   <ItemGroup>
     <Compile Include="ApiConnector.cs" />
     <Compile Include="DataTypes.cs" />
+    <Compile Include="EditOrAddServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditOrAddServer.Designer.cs">
+      <DependentUpon>EditOrAddServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditOrAddUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,12 @@
     </Compile>
     <Compile Include="PasswordView.Designer.cs">
       <DependentUpon>PasswordView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServerManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerManager.Designer.cs">
+      <DependentUpon>ServerManager.cs</DependentUpon>
     </Compile>
     <Compile Include="ServerView.cs">
       <SubType>Form</SubType>
@@ -189,11 +201,17 @@
     <Compile Include="VncWindow.Designer.cs">
       <DependentUpon>VncWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EditOrAddServer.resx">
+      <DependentUpon>EditOrAddServer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditOrAddUser.resx">
       <DependentUpon>EditOrAddUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordView.resx">
       <DependentUpon>PasswordView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServerManager.resx">
+      <DependentUpon>ServerManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServerView.resx">
       <DependentUpon>ServerView.cs</DependentUpon>

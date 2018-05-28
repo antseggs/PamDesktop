@@ -69,6 +69,7 @@ namespace PamDesktop
             catch (Exception ex)
             {
                 MessageBox.Show("Error in connecting with the server. Ensure the server is turned on!");
+                this.Close();
             }
         }
     }

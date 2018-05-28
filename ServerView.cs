@@ -110,7 +110,7 @@ namespace PamDesktop
             {
                 btnAccountSettings.Enabled = true;
                 btnManageUsers.Enabled = true;
-                btnManagePasswords.Enabled = true;
+                btnManagePasswords.Enabled = false;
                 btnViewLogs.Enabled = true;
                 btnManageServers.Enabled = true;
             }
@@ -322,7 +322,9 @@ namespace PamDesktop
 
         private void btnManageServers_Click(object sender, EventArgs e)
         {
-
+            //Open server screen
+            ServerManager form = new ServerManager(servers, information);
+            form.ShowDialog();
         }
 
         private void btnManageUsers_Click(object sender, EventArgs e)

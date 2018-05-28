@@ -125,10 +125,11 @@ namespace PamDesktop
 
                     var response = ApiConnector.SendToApi(path, json);
 
-                    if (response.Contains("\"Passed!\""))
+                    if (response.Contains("Passed!"))
                     {
                         MessageBox.Show("User added!");
-                        newUser.UserId = Int32.Parse(response.Substring(0, 2));
+                        var temp = response.Substring(1, 2);
+                        newUser.UserId = Int32.Parse(temp);
                     }
 
                     GetAccessLevel sendlvl = new GetAccessLevel();
@@ -143,7 +144,7 @@ namespace PamDesktop
 
                     response = ApiConnector.SendToApi(path, json);
                     var serverList = JsonConvert.DeserializeObject<List<ServerAccessLevel>>(response);
-                    ServerAccessLevel accessToSend = new ServerAccessLevel();
+                    ServerAccessLogedIn accessToSend = new ServerAccessLogedIn();
 
                     // Add the user permissions bassed on access Level Selected
                     if (cmbAccessLevel.SelectedIndex < 4)
@@ -167,8 +168,10 @@ namespace PamDesktop
                             
                             if (objec.ServerId != 5)
                             {
+                                accessToSend.SessionKey = information.Token;
+                                accessToSend.ServerAccessId = -1;
                                 accessToSend.UserId = newUser.UserId;
-                                accessToSend.DepartmentId = cmbDepartments.SelectedIndex;
+                                accessToSend.DepartmentId = cmbDepartments.SelectedIndex + 1;
                                 accessToSend.ServerId = objec.ServerId;
                                 accessToSend.StartTime = null;
                                 accessToSend.FinishTime = null;
@@ -285,6 +288,10 @@ namespace PamDesktop
                     if (response == "\"Passed!\"")
                     {
                         MessageBox.Show("User Updated!");
+                    }
+                    if (response == "\"Username Clash!\"")
+                    {
+                        MessageBox.Show("Duplicated username!, Please try again");
                     }
                 }
                 this.Close();

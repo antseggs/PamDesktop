@@ -153,3 +153,5 @@ C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Accord.Video.xml
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\bin\Debug\Accord.Video.FFMPEG.xml
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.ViewUsers.resources
 C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.EditOrAddUser.resources
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.ServerManager.resources
+C:\Users\antho\OneDrive\Documents\GitHub\PamDesktop\obj\Debug\PamDesktop.EditOrAddServer.resources
