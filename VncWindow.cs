@@ -46,7 +46,7 @@ namespace PamDesktop
                 timer1.Interval = 20;
                 timer1.Tick += Timer1_Tick;
                 vf = new VideoFileWriter();
-                vf.Open(Path.GetTempPath() + timeStamp + ".avi", Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, 25, VideoCodec.MPEG4, 1000000);
+                vf.Open(Path.GetTempPath() + timeStamp + ".avi", 2560, 1600, 25, VideoCodec.MPEG4, 1000000);
                 timer1.Start();
             }
             catch (Exception ex)
@@ -61,7 +61,7 @@ namespace PamDesktop
         {
             try
             {
-                var bp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                var bp = new Bitmap(2560, 1600);
                 var gr = Graphics.FromImage(bp);
                 gr.CopyFromScreen(0, 0, 0, 0, bp.Size);
                 vf.WriteVideoFrame(bp);
@@ -86,10 +86,10 @@ namespace PamDesktop
                     var location = new System.IO.DirectoryInfo(Path.GetTempPath() + timeStamp + ".avi");
                     FileInfo f = new FileInfo(location.ToString());
                     string uploadfile = f.FullName;
-                    var client = new SftpClient("92.233.50.207", 22, "root", "toor");
+                    var client = new SftpClient("92.233.50.207", 22, "root", "ChocolateBalls1");
                     client.Connect();
-                        client.ChangeDirectory("/Recordings");
-                        var fileStream = new FileStream(uploadfile, FileMode.Open);
+                        client.ChangeDirectory(@"/Recordings");
+                        var fileStream = new FileStream(location.ToString(), FileMode.Open);
                         client.BufferSize = 4 * 1024;
                         client.UploadFile(fileStream, f.Name, null);
                     client.Disconnect();
